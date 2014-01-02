@@ -17,7 +17,7 @@ public class Selection implements Screen {
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Table table;
-	private TextButton buttonBack,buttonPlay;
+	private TextButton buttonBack,buttonPlay,buttonPlayer;
 
 	@Override
 	public void render(float delta) {
@@ -63,10 +63,20 @@ public class Selection implements Screen {
 						((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
 					}
 				});
+		//PlayerIcon Button
+				buttonPlayer1 = new ImageButton("",skin);
+				buttonPlayer1.addListener(new ClickListener() {
+					public void clicked(InputEvent event, float x, float y){
+						();
+					}
+				});
 				//TODO: ADD player selection list
 				
-				Table t2 = new Table(skin);
-				Table t3 = new Table(skin);
+				Table tableBack = new Table(skin);
+				Table tablePlay = new Table(skin);
+				Table tableList1 = new Table(skin);
+				Table tableList2 = new Table(skin);
+
 				buttonPlay.setHeight(50);
 				buttonBack.setHeight(50);
 				buttonPlay.setWidth(80);
@@ -76,16 +86,23 @@ public class Selection implements Screen {
 				table.add("CHOOSE TEACHER").center();
 				table.row().padTop(30);
 				table.add("List1\nderp\nderp\nderp\nderp\nderp\nderp").width(table.getWidth()/3);
-				table.add(t2).width(table.getWidth()/3);
-				t2.add(buttonPlay);
+				table.add(tablePlay).width(table.getWidth()/3);
+				tablePlay.add(buttonPlay);
 				table.add("List2\nderp").width(table.getWidth()/3);
 				table.row();
 				table.add().width(table.getWidth()/3);
-				table.add(t3);
-				t3.add(buttonBack).center();
+				table.add(tableBack);
+				tableBack.add(buttonBack).center();
 				table.debug();
 				stage.addActor(table);
 
+	}
+	private void populateList(Table list,int rows,int cols){
+		for(int i = 0; i < rows; i++){
+			for(int j = 0; j < cols; j++){
+				list.
+			}
+		}
 	}
 
 	@Override
