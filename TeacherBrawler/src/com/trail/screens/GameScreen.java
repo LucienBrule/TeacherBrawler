@@ -12,17 +12,25 @@ import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.trail.teachers.Teacher;
 
 public class GameScreen implements Screen {
 	
-	private World world;
+	public static World world;
 	private Box2DDebugRenderer debugRenderer;
 	private OrthographicCamera camera;
 	
 	private final float TIMESTEP = 1/60f;
 	private final int VELOCITYITERATIONS = 8;
 	private final int POSITIONITERATIONS = 3;
+	
+	private Teacher player1;
+	private Teacher player2;
 
+	/**
+	 * Gets called repeatedly
+	 * @param delta The time in seconds since the last frame
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0,0,0,0);
@@ -93,9 +101,12 @@ public class GameScreen implements Screen {
 
 	}
 
+	/**
+	 * Called when the Screen initialized, and when the screen resumes from pause
+	 */
 	@Override
 	public void resume() {
-
+		
 	}
 
 	@Override
@@ -103,5 +114,6 @@ public class GameScreen implements Screen {
 		debugRenderer.dispose();
 		world.dispose();
 	}
+
 
 }
