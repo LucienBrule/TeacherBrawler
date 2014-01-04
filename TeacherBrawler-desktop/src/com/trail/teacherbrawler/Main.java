@@ -10,6 +10,7 @@ public class Main {
 		cfg.title = TeacherBrawler.TITLE + " v" + TeacherBrawler.Version;
 		cfg.useGL20 = true;
 		cfg.vSyncEnabled = true;
+		
 		cfg.width = 1280;
 		cfg.height = 720;
 		cfg.addIcon("img/icons/DesktopIcon.png", FileType.Internal);

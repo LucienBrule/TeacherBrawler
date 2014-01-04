@@ -6,9 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -19,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.trail.ClickListener.BetterClickListener;
+import com.trail.teacherbrawler.TeacherBrawler;
 
 public class Selection implements Screen {
 	//<--Primary Layout-->\\
@@ -98,7 +97,7 @@ public class Selection implements Screen {
 		buttonPlay = new TextButton("PLAY",skin);
 		buttonPlay.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y){
-				((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen());
+				((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen());//selection1, selection2));
 			}
 		});
 		Table tablePlay = new Table(skin);
@@ -156,17 +155,10 @@ public class Selection implements Screen {
 		selection2 = s;
 	}
 
-	private static NinePatch processNinePatchFile(String fname) { //http://stackoverflow.com/questions/15355723/loading-nine-patch-image-as-a-libgdx-scene2d-button-background-looks-awful
-		Gdx.app.log("processNinePatchFile", "");
-		final Texture t = new Texture(Gdx.files.internal(fname));
-	    final int width = t.getWidth() - 2;
-	    final int height = t.getHeight() - 2;
-	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 3, 3, 3, 3);
-	}
 	private void populateIconList1(){
 		Gdx.app.log("populateIconList1","");
 		for(int i = 0; i < numIcons; i++){
-			ImageButton b = new ImageButton(new NinePatchDrawable(processNinePatchFile("playerIcons/playerIcon_" + i + ".png")));
+			ImageButton b = new ImageButton(new NinePatchDrawable(TeacherBrawler.processNinePatchFile("playerIcons/playerIcon_" + i + ".png")));
 			b.addListener(new BetterClickListener(i) {
 				public void clicked(InputEvent event, float x, float y){
 						updateSelection1(getNumber());
@@ -182,7 +174,7 @@ public class Selection implements Screen {
 	private void populateIconList2(){
 		Gdx.app.log("populateIconList2","");
 		for(int i = 0; i < numIcons ; i++){
-			ImageButton b = new ImageButton(new NinePatchDrawable(processNinePatchFile("playerIcons/playerIcon_" + i + ".png")));
+			ImageButton b = new ImageButton(new NinePatchDrawable(TeacherBrawler.processNinePatchFile("playerIcons/playerIcon_" + i + ".png")));
 			b.addListener(new BetterClickListener(i) {
 				public void clicked(InputEvent event, float x, float y){
 					updateSelection2(getNumber());
